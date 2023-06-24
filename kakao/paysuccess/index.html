@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>결제성공 </title>
+  <title>Redirect Page</title>
+  <script>
+    function redirectToApp() {
+      var pgToken = getParameterByName('pg_token');
+      if (pgToken) {
+        var appScheme = 'paymenttest://paymenttest.com/kakaopay2';  // 앱의 딥링크 스킴
+        var deepLink = appScheme + '?pg_token=' + encodeURIComponent(pgToken);
+        window.location.href = deepLink;
+      }
+    }
+
+    function getParameterByName(name) {
+      var url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+      var results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    window.onload = redirectToApp;
+  </script>
 </head>
 <body>
-    <h1> 결제완료 - 앱으로 돌아기기 구현</h1>
+  <h1>Redirecting...</h1>
 </body>
 </html>
