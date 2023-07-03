@@ -6,7 +6,7 @@
     function redirectToApp() {
       var pgToken = getParameterByName('pg_token');
       if (pgToken) {
-        var appScheme = 'paymenttest://paymenttest.com/paySuccess';  // 앱의 딥링크 스킴
+        var appScheme = 'paymenttest://paymenttest.com/pgtokenTest';  // 앱의 딥링크 스킴
         var deepLink = appScheme + '?pg_token=' + encodeURIComponent(pgToken);
         window.location.href = deepLink;
       }
